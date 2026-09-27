@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Account Activation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            color: #333333;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .header h2 {
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        .content {
+            padding: 20px 0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .code-box {
+            text-align: center;
+            background-color: #f0f8ff;
+            border: 2px dashed #1e90ff;
+            border-radius: 6px;
+            padding: 20px;
+            font-size: 24px;
+            letter-spacing: 4px;
+            font-weight: bold;
+            color: #1e90ff;
+            margin: 20px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #1e90ff;
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 20px auto;
+        }
+
+        .footer {
+            font-size: 13px;
+            color: #777777;
+            text-align: center;
+            border-top: 1px solid #eeeeee;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h2>Activate Your Account</h2>
+    </div>
+    <div class="content">
+        <p>Hello <strong th:text="${username} + ','">User</strong>,</p>
+        <p>Thanks for registering! To activate your account, please use the activation code below:</p>
+
+        <div class="code-box" th:text="${activation_Code}">123456</div>
+
+        <p>Or simply click the button below to activate directly:</p>
+        <div style="text-align: center;">
+            <a class="button" th:href="${activationLink}">Activate Account</a>
+        </div>
+
+        <p>If the button doesn’t work, paste this link in your browser:</p>
+        <p style="color: #1e90ff; word-break: break-all;" th:text="${activationLink}">
+            http://example.com/activate?code=123456</p>
+    </div>
+    <div class="footer">
+        &copy; <span th:text="${year}">2025</span> Your Company. All rights reserved.
+    </div>
+</div>
+</body>
+</html>

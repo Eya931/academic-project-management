@@ -1,0 +1,57 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/project_management
+    username: username
+    password: password
+
+    hikari:
+      connection-init-sql: "SET password_encryption = 'scram-sha-256'"
+      connection-timeout: 30000
+      minimum-idle: 5
+      maximum-pool-size: 20
+  mvc:
+    contentnegotiation:
+      favor-parameter: false
+      favor-path-extension: false
+      default-content-type: application/json
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true  # Enable temporarily for debugging
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+
+  mail:
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: false
+            required: true
+          auth: false
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+    host: localhost
+    port: 1025
+
+application:
+  security:
+    jwt:
+      secret-key: efb90737c58fb43d9af3845bd18359b179304bfec7b4ee5a7ff1f7d4b4c21e76a8004df4e4dae3463b297eb4f917465f5e60aff0eead3c2b0a37f4148ce66ce40846763c944c528df36a010b63321732f33efd5618ea0ef0169b13c45054fbe11a34255dc7773fa27c7f6a3158c3409bec55ef252e517b4e946b66dccd66d3bb3bad33109f646982e6e9eaa2246d7fe431b40c3981cbe48c141de281167cd9440ffb24beb1d0d9a4ed8900c53b933b426666dbcb2da9ae26a627c9c79721be7ba955aeeae395896cd6083b5ab2ba4060ee2623aa31b373d47231eb8979057ba9b8a718ac9ab85c81387318635d3525c065dc9a0da851ee191173596794164b09
+      expiration: 8640000
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account
+      activation-admin-url : http://localhost:4200/activate-account
+
+server:
+  port: 8088
+app:
+  first-admin:
+    email: admin@gmail.com
+    password: adminPassword
